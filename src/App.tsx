@@ -7,36 +7,37 @@ interface Employee {
 }
 
 function App() {
-  // ใส่ Generic เพื่อกำหนดว่าเป็น string (ใส่หรือไม่ใส่ก็ได้)
- 
- 
-  const [person, setPerson] = useState<Employee>({
-    id:100,
-    name:"Tjay",
-    salary:300000
-  });
-   const [isVisible, setIsvisible] = useState<boolean>(true);
+  const [isVisible, setIsvisible] = useState<boolean>(true);
+  const [data, setData] = useState<Employee[]>([
+    { id: 1, name: "Tjay", salary: 50000 },
+    { id: 2, name: "boss", salary: 40000 },
+    { id: 3, name: "poom", salary: 30000 },
+  ]);
 
+  function deleteData(id: number) {
+      console.log("ต้องการลบข้อมูลพนักานรหัส", id);
+      setData(data.filter(person => person.id !==id)); // ผลลับคือจะได้ array ก้อนใหม่ที่ id ไม่เท่ากับ id ที่ส่งมา
+
+  }
 
   return (
     <>
-    <button onClick={() => setIsvisible(!isVisible)}>{isVisible ? "ซ่อน" : "แสดง"}</button>
+      <button onClick={() => setIsvisible(!isVisible)}>
+        {isVisible ? "ซ่อน" : "แสดง"}
+      </button>
+      <p>จำนวนข้อมูล {data.length} รายการ</p>
       {isVisible && (
-        <div>
-          <h2>รหัสพนักงาน {person.id}</h2>
-          <h2>ชื่อพนักงาน {person.name}</h2>
-          <h2>เงินเดือน {person.salary} บาท</h2>
-          {/* น Arrow Function ถ้าเราต้องการส่งค่ากลับ (Return) เป็น Object ทันที เราต้องครอบด้วยวงเล็บกลมครับ 
-          เพื่อไม่ให้คอมพิวเตอร์สับสนว่าปีกกานั้นเป็นขอบเขตของฟังก์ชันหรือเป็นตัว Object */}
-          <button onClick={() => setPerson(data  => ({
-            ...data,
-            name:"boss",
-            salary:200000
-          }))}>แก้ใข</button>
-        </div>
+        <ul>
+          {data.map((person) => (
+            <li key={person.id}>
+              ชื่อพนักงาน {person.name} , เงินเดือน {person.salary} บาท
+              <button onClick={() => deleteData(person.id)}>ลบ</button>
+            </li>
+          ))}
+        </ul>
       )}
-      <hr/>
-       </>
+      <hr />
+    </>
   );
 }
 
