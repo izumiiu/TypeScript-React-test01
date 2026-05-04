@@ -1,4 +1,8 @@
 import { useState } from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+
 
 interface Employee {
   id: number;
@@ -22,6 +26,7 @@ function App() {
 
   return (
     <>
+    <Header/>
       <button onClick={() => setIsvisible(!isVisible)}>
         {isVisible ? "ซ่อน" : "แสดง"}
       </button>
@@ -37,6 +42,7 @@ function App() {
         </ul>
       )}
       <hr />
+      <Footer/>
     </>
   );
 }
