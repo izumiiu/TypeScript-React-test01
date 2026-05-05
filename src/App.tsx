@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import EmployeeList from "./components/EmployeeList";
 
-
-
-interface Employee {
+// export ออกไปเพื่อไห้ file อื่นสามารถเข้าถึง interface ของ employee ได้
+export interface Employee {
   id: number;
   name: string;
   salary: number;
@@ -31,16 +31,8 @@ function App() {
         {isVisible ? "ซ่อน" : "แสดง"}
       </button>
       <p>จำนวนข้อมูล {data.length} รายการ</p>
-      {isVisible && (
-        <ul>
-          {data.map((person) => (
-            <li key={person.id}>
-              ชื่อพนักงาน {person.name} , เงินเดือน {person.salary} บาท
-              <button onClick={() => deleteData(person.id)}>ลบ</button>
-            </li>
-          ))}
-        </ul>
-      )}
+      {/* prop data กับ dalateData */}
+      {isVisible && <EmployeeList data={data} deleteData={deleteData}/>}
       <hr />
       <Footer company="นันพาทัว" year={2027} />
     </>
