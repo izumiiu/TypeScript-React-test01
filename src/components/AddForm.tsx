@@ -22,6 +22,9 @@ export default function AddForm({insertData}:AddFormProps){
         setName("");
         setSalary(15000);
     }
+
+
+    
     
     return (
         <>

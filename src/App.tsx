@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import EmployeeList from "./components/EmployeeList";
 import AddForm from "./components/AddForm";
+import Pokemon from "./components/Pokemon";
 
 // export ออกไปเพื่อไห้ file อื่นสามารถเข้าถึง interface ของ employee ได้
 export interface Employee {
@@ -42,6 +43,7 @@ function App() {
       {isVisible && <EmployeeList data={data} deleteData={deleteData}/>}
       <hr />
       <Footer company="นันพาทัว" year={2027} />
+      <Pokemon/>
     </>
   );
 }
