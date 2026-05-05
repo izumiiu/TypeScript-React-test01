@@ -1,9 +1,14 @@
-// สร้าง component แบบ function ปกติ
 
-function Footer(){
+interface CompanyInfo{
+    company:string;
+    year:number;
+}
+
+// แบบ Object Destructuring
+function Footer({company, year}:CompanyInfo){
     return(
         <>
-            <i>บริษัท TJ sawatdipong จำกัด | ปีที่ก่อตั้ง 2027</i>
+            <i>บริษัท {company} จำกัด | ปีที่ก่อตั้ง {year}</i>
         </>
     )
 }

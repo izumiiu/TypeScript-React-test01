@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-    <Header/>
+    <Header title="แอพจัดการข้อมูลพนักงาน"/>
       <button onClick={() => setIsvisible(!isVisible)}>
         {isVisible ? "ซ่อน" : "แสดง"}
       </button>
@@ -42,7 +42,7 @@ function App() {
         </ul>
       )}
       <hr />
-      <Footer/>
+      <Footer company="นันพาทัว" year={2027} />
     </>
   );
 }

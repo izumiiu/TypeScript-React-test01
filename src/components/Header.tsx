@@ -1,9 +1,12 @@
-// สร้าง component แบบ arrow function
-const Header = () => {
+
+interface HeaderProps {
+    title:string;
+}
+
+const Header = (props:HeaderProps) => {
   return (
     <>
-      <h1>My Application🤡</h1>
-      {/* hr คือ เส้นขั้น */}
+      <h1>{props.title}</h1>
       <hr />
     </>
   );
