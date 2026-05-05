@@ -12,7 +12,7 @@ export default function EmployeeList({data, deleteData}:EmployeeListProps) {
       <ul>
         {data.map((person) => (
           <li key={person.id}>
-            ชื่อพนักงาน {person.name} , เงินเดือน {person.salary} บาท
+            ชื่อพนักงาน: {person.name} , เงินเดือน {person.salary} บาท
             <button onClick={() => deleteData(person.id)}>ลบ</button>
           </li>
         ))}

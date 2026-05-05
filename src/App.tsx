@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import EmployeeList from "./components/EmployeeList";
+import AddForm from "./components/AddForm";
 
 // export ออกไปเพื่อไห้ file อื่นสามารถเข้าถึง interface ของ employee ได้
 export interface Employee {
@@ -18,6 +19,11 @@ function App() {
     { id: 3, name: "poom", salary: 30000 },
   ]);
 
+  function insertData(emp:Employee){
+    // console.log("ข้อมูลที่ส่งมาจากform = ", emp);
+    setData([...data,emp])
+  }
+
   function deleteData(id: number) {
       console.log("ต้องการลบข้อมูลพนักานรหัส", id);
       setData(data.filter(person => person.id !==id)); // ผลลับคือจะได้ array ก้อนใหม่ที่ id ไม่เท่ากับ id ที่ส่งมา
@@ -27,6 +33,7 @@ function App() {
   return (
     <>
     <Header title="แอพจัดการข้อมูลพนักงาน"/>
+    <AddForm insertData={insertData}/>
       <button onClick={() => setIsvisible(!isVisible)}>
         {isVisible ? "ซ่อน" : "แสดง"}
       </button>
